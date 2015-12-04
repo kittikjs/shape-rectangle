@@ -12,12 +12,12 @@ describe('Shape::Rectangle', () => {
     mock.expects('fill').once().withArgs({
       x1: 10,
       y1: 10,
-      x2: 25,
-      y2: 15,
+      x2: 24,
+      y2: 14,
       background: undefined,
       foreground: undefined
     });
-    mock.expects('setPosition').once().withArgs(18, 13).returns(cursor);
+    mock.expects('setPosition').once().withArgs(17.5, 12.5).returns(cursor);
     mock.expects('write').once().withArgs('');
 
     rectangle.render(cursor);
@@ -30,23 +30,23 @@ describe('Shape::Rectangle', () => {
     let mock = sinon.mock(cursor);
     let rectangle = new Rectangle({
       text: 'test',
-      width: 10,
-      height: 10,
-      x: 0,
-      y: 0,
+      width: 11,
+      height: 11,
+      x: 1,
+      y: 1,
       background: COLORS.YELLOW,
       foreground: COLORS.BLACK
     });
 
     mock.expects('fill').once().withArgs({
-      x1: 0,
-      y1: 0,
-      x2: 10,
-      y2: 10,
+      x1: 1,
+      y1: 1,
+      x2: 11,
+      y2: 11,
       background: 'yellow',
       foreground: 'black'
     });
-    mock.expects('setPosition').once().withArgs(3, 5).returns(cursor);
+    mock.expects('setPosition').once().withArgs(4.5, 6.5).returns(cursor);
     mock.expects('write').once().withArgs('test');
 
     rectangle.render(cursor);
@@ -67,7 +67,8 @@ describe('Shape::Rectangle', () => {
         x: 10,
         y: 10,
         background: undefined,
-        foreground: undefined
+        foreground: undefined,
+        animation: undefined
       }
     });
   });
@@ -82,7 +83,11 @@ describe('Shape::Rectangle', () => {
         x: 0,
         y: 0,
         background: undefined,
-        foreground: undefined
+        foreground: undefined,
+        animation: {
+          name: 'print',
+          interval: 100
+        }
       }
     };
 
@@ -94,5 +99,7 @@ describe('Shape::Rectangle', () => {
     assert.deepEqual(rectangle.getPosition(), {x: 0, y: 0});
     assert.isUndefined(rectangle.getBackground());
     assert.isUndefined(rectangle.getForeground());
+    assert.deepEqual(rectangle.getAnimation(), {name: 'print', interval: 100});
+    assert.ok(rectangle.isAnimated());
   });
 });
