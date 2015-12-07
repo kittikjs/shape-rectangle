@@ -100,6 +100,8 @@ describe('Shape::Rectangle', () => {
     assert.isUndefined(rectangle.getBackground());
     assert.isUndefined(rectangle.getForeground());
     assert.deepEqual(rectangle.getAnimation(), {name: 'print', interval: 100});
+    assert.equal(rectangle.get('animation.name'), 'print');
+    assert.equal(rectangle.get('animation.interval'), 100);
     assert.ok(rectangle.isAnimated());
   });
 });
