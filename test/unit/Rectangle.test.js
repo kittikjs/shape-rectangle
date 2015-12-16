@@ -11,8 +11,8 @@ describe('Shape::Rectangle', () => {
 
     mock.expects('background').never();
     mock.expects('foreground').never();
-    mock.expects('moveTo').exactly(7).returns(cursor);
-    mock.expects('write').exactly(6).returns(cursor);
+    mock.expects('moveTo').exactly(8).returns(cursor);
+    mock.expects('write').exactly(7).returns(cursor);
 
     rectangle.render(cursor);
 
@@ -34,8 +34,8 @@ describe('Shape::Rectangle', () => {
 
     mock.expects('background').once().withArgs(11);
     mock.expects('foreground').once().withArgs(0);
-    mock.expects('moveTo').exactly(13).returns(cursor);
-    mock.expects('write').exactly(12).returns(cursor);
+    mock.expects('moveTo').exactly(14).returns(cursor);
+    mock.expects('write').exactly(13).returns(cursor);
 
     rectangle.render(cursor);
 
