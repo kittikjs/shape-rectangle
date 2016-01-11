@@ -5,22 +5,22 @@ const cursor = require('kittik-cursor').Cursor.create().resetTTY();
 
 Rectangle.create({
   text: 'Rectangle',
-  x: 20,
+  x: 'center',
   y: 2,
   width: 15,
   height: 5,
-  background: cursor.COLORS.GREEN,
-  foreground: cursor.COLORS.BLACK
+  background: 'green',
+  foreground: 'black'
 }).render(cursor);
 
 Rectangle.create({
   text: 'Banana, Banana!!!',
-  x: 40,
-  y: 10,
-  width: 30,
-  height: 3,
-  background: cursor.COLORS.DARK_BLUE,
-  foreground: cursor.COLORS.WHITE
+  x: 'center',
+  y: 'middle',
+  width: '50%',
+  height: 5,
+  background: 'dark_blue',
+  foreground: 'white'
 }).render(cursor);
 
 cursor.flush();
