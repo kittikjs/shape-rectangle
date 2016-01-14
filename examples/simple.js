@@ -3,24 +3,7 @@
 const Rectangle = require('../lib/Rectangle').default;
 const cursor = require('kittik-cursor').Cursor.create().resetTTY();
 
-Rectangle.create({
-  text: 'Rectangle',
-  x: 'center',
-  y: 2,
-  width: 15,
-  height: 5,
-  background: 'green',
-  foreground: 'black'
-}).render(cursor);
+Rectangle.create({text: 'Text here!', x: 'center', width: 20, background: 'green', foreground: 'black'}).render(cursor);
+Rectangle.create({x: 'center', y: 'middle', width: '50%', height: '20%', background: 'dark_blue'}).render(cursor);
 
-Rectangle.create({
-  text: 'Banana, Banana!!!',
-  x: 'center',
-  y: 'middle',
-  width: '50%',
-  height: 5,
-  background: 'dark_blue',
-  foreground: 'white'
-}).render(cursor);
-
-cursor.flush();
+cursor.moveTo(1, process.stdout.rows).flush();
