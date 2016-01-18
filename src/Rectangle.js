@@ -7,16 +7,16 @@ import Shape from 'kittik-shape-basic';
  */
 export default class Rectangle extends Shape {
   render(cursor) {
-    let text = this.getText();
-    let width = this.getWidth();
-    let height = this.getHeight();
-    let x1 = this.getX();
-    let y1 = this.getY();
-    let x2 = x1 + width;
-    let y2 = y1 + height;
-    let background = this.getBackground();
-    let foreground = this.getForeground();
-    let filler = ' '.repeat(width);
+    const text = this.getText();
+    const width = this.getWidth();
+    const height = this.getHeight();
+    const x1 = this.getX();
+    const y1 = this.getY();
+    const x2 = x1 + width;
+    const y2 = y1 + height;
+    const background = this.getBackground();
+    const foreground = this.getForeground();
+    const filler = ' '.repeat(width);
 
     if (typeof background !== 'undefined') cursor.background(background);
     if (typeof foreground !== 'undefined') cursor.foreground(foreground);

@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import sinon from 'sinon';
 import Rectangle from '../../src/Rectangle';
-import { Cursor } from 'kittik-cursor';
+import Cursor from 'kittik-cursor';
 
 describe('Shape::Rectangle', () => {
   it('Should properly render with default options', () => {
