@@ -5,9 +5,9 @@ import Cursor from 'kittik-cursor';
 
 describe('Shape::Rectangle', () => {
   it('Should properly render with default options', () => {
-    let cursor = Cursor.create();
-    let rectangle = new Rectangle();
-    let mock = sinon.mock(cursor);
+    const cursor = Cursor.create();
+    const rectangle = new Rectangle();
+    const mock = sinon.mock(cursor);
 
     mock.expects('background').never();
     mock.expects('foreground').never();
@@ -20,9 +20,9 @@ describe('Shape::Rectangle', () => {
   });
 
   it('Should properly render with custom options', () => {
-    let cursor = Cursor.create();
-    let mock = sinon.mock(cursor);
-    let rectangle = new Rectangle({
+    const cursor = Cursor.create();
+    const mock = sinon.mock(cursor);
+    const rectangle = new Rectangle({
       text: 'test',
       width: 11,
       height: 11,
@@ -43,8 +43,8 @@ describe('Shape::Rectangle', () => {
   });
 
   it('Should properly serialize shape to Object representation', () => {
-    let rectangle = new Rectangle();
-    let obj = rectangle.toObject();
+    const rectangle = new Rectangle();
+    const obj = rectangle.toObject();
 
     assert.deepEqual(obj, {
       type: 'Rectangle',
@@ -61,7 +61,7 @@ describe('Shape::Rectangle', () => {
   });
 
   it('Should properly create rectangle from Object representation', () => {
-    let obj = {
+    const obj = {
       type: 'Rectangle',
       options: {
         text: 'test',
@@ -74,7 +74,7 @@ describe('Shape::Rectangle', () => {
       }
     };
 
-    let rectangle = Rectangle.fromObject(obj);
+    const rectangle = Rectangle.fromObject(obj);
     assert.instanceOf(rectangle, Rectangle);
     assert.equal(rectangle.getText(), 'test');
     assert.equal(rectangle.getWidth(), 30);
