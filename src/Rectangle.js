@@ -18,10 +18,7 @@ export default class Rectangle extends Shape {
     const foreground = this.getForeground();
     const filler = ' '.repeat(width);
 
-    if (typeof background !== 'undefined') cursor.background(background);
-    if (typeof foreground !== 'undefined') cursor.foreground(foreground);
-
-    cursor.moveTo(x1, y1);
+    cursor.moveTo(x1, y1).background(background).foreground(foreground);
 
     for (let y = y1; y <= y2; y++) cursor.write(filler).moveTo(x1, y);
 
