@@ -17,7 +17,7 @@ Rectangle.create({
   x: 'center',
   y: 'middle',
   width: '50%',
-  height: '20%',
+  height: 7,
   background: 'dark_blue'
 }).render(cursor);
 
