@@ -9,8 +9,8 @@ describe('Shape::Rectangle', () => {
     const rectangle = new Rectangle();
     const mock = sinon.mock(cursor);
 
-    mock.expects('background').never();
-    mock.expects('foreground').never();
+    mock.expects('background').once().withExactArgs(false).returns(cursor);
+    mock.expects('foreground').once().withExactArgs(false).returns(cursor);
     mock.expects('moveTo').exactly(8).returns(cursor);
     mock.expects('write').exactly(7).returns(cursor);
 
@@ -32,8 +32,8 @@ describe('Shape::Rectangle', () => {
       foreground: 'black'
     });
 
-    mock.expects('background').once().withArgs('yellow');
-    mock.expects('foreground').once().withArgs('black');
+    mock.expects('background').once().withArgs('yellow').returns(cursor);
+    mock.expects('foreground').once().withArgs('black').returns(cursor);
     mock.expects('moveTo').exactly(14).returns(cursor);
     mock.expects('write').exactly(13).returns(cursor);
 
@@ -54,8 +54,8 @@ describe('Shape::Rectangle', () => {
         height: 5,
         x: 10,
         y: 10,
-        background: undefined,
-        foreground: undefined
+        background: false,
+        foreground: false
       }
     });
   });
@@ -68,9 +68,7 @@ describe('Shape::Rectangle', () => {
         width: 30,
         height: 50,
         x: 1,
-        y: 1,
-        background: undefined,
-        foreground: undefined
+        y: 1
       }
     };
 
@@ -81,7 +79,7 @@ describe('Shape::Rectangle', () => {
     assert.equal(rectangle.getHeight(), 50);
     assert.equal(rectangle.getX(), 1);
     assert.equal(rectangle.getY(), 1);
-    assert.isUndefined(rectangle.getBackground());
-    assert.isUndefined(rectangle.getForeground());
+    assert.notOk(rectangle.getBackground());
+    assert.notOk(rectangle.getForeground());
   });
 });
