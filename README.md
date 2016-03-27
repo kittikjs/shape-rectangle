@@ -30,7 +30,7 @@ import Rectangle from 'kittik-shape-rectangle';
 import Cursor from 'kittik-cursor';
 
 // You must pass to render method cursor that will be used for rendering the shape
-Rectangle.create().render(Cursor.create());
+Rectangle.create(Cursor.create()).render();
 ```
 
 ## License
