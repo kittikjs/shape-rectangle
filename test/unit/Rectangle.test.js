@@ -1,12 +1,14 @@
-import { assert } from 'chai';
+import {assert} from 'chai';
 import sinon from 'sinon';
 import Rectangle from '../../src/Rectangle';
 import Cursor from 'kittik-cursor';
 
+const cursor = Cursor.create();
+
 describe('Shape::Rectangle', () => {
   it('Should properly render with default options', () => {
     const cursor = Cursor.create();
-    const rectangle = new Rectangle();
+    const rectangle = new Rectangle(cursor);
     const mock = sinon.mock(cursor);
 
     mock.expects('background').once().withExactArgs(false).returns(cursor);
@@ -14,7 +16,7 @@ describe('Shape::Rectangle', () => {
     mock.expects('moveTo').exactly(8).returns(cursor);
     mock.expects('write').exactly(7).returns(cursor);
 
-    rectangle.render(cursor);
+    rectangle.render();
 
     mock.verify();
   });
@@ -22,7 +24,7 @@ describe('Shape::Rectangle', () => {
   it('Should properly render with custom options', () => {
     const cursor = Cursor.create();
     const mock = sinon.mock(cursor);
-    const rectangle = new Rectangle({
+    const rectangle = new Rectangle(cursor, {
       text: 'test',
       width: 11,
       height: 11,
@@ -37,13 +39,13 @@ describe('Shape::Rectangle', () => {
     mock.expects('moveTo').exactly(14).returns(cursor);
     mock.expects('write').exactly(13).returns(cursor);
 
-    rectangle.render(cursor);
+    rectangle.render();
 
     mock.verify();
   });
 
   it('Should properly serialize shape to Object representation', () => {
-    const rectangle = new Rectangle();
+    const rectangle = new Rectangle(cursor);
     const obj = rectangle.toObject();
 
     assert.deepEqual(obj, {
@@ -72,8 +74,9 @@ describe('Shape::Rectangle', () => {
       }
     };
 
-    const rectangle = Rectangle.fromObject(obj);
+    const rectangle = Rectangle.fromObject(obj, cursor);
     assert.instanceOf(rectangle, Rectangle);
+    assert.instanceOf(rectangle.getCursor(), Cursor);
     assert.equal(rectangle.getText(), 'test');
     assert.equal(rectangle.getWidth(), 30);
     assert.equal(rectangle.getHeight(), 50);
