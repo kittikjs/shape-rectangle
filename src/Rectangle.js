@@ -6,7 +6,8 @@ import Shape from 'kittik-shape-basic';
  * @since 1.0.0
  */
 export default class Rectangle extends Shape {
-  render(cursor) {
+  render() {
+    const cursor = this.getCursor();
     const text = this.getText();
     const width = this.getWidth();
     const height = this.getHeight();
