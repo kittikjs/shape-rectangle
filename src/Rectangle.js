@@ -3,9 +3,36 @@ import Shape from 'kittik-shape-basic';
 /**
  * Implements rectangle shape with text support.
  *
+ * @extends {Shape}
  * @since 1.0.0
  */
 export default class Rectangle extends Shape {
+  /**
+   * Create Rectangle shape instance.
+   *
+   * @param {Cursor} cursor Cursor instance
+   * @param {Object} [options] Options object
+   * @example
+   * Rectangle.create(cursor, {
+   *   text: 'Hello, World',
+   *   width: 20,
+   *   height: '50%',
+   *   x: 'center',
+   *   y: 'middle',
+   *   background: 'black',
+   *   foreground: 'white'
+   * });
+   */
+  constructor(cursor, options) {
+    super(cursor, options);
+  }
+
+  /**
+   * Render the rectangle with specified options.
+   *
+   * @override
+   * @returns {Rectangle}
+   */
   render() {
     const cursor = this.getCursor();
     const text = this.getText();
