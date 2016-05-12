@@ -11,8 +11,8 @@ describe('Shape::Rectangle', () => {
     const rectangle = new Rectangle(cursor);
     const mock = sinon.mock(cursor);
 
-    mock.expects('background').once().withExactArgs(false).returns(cursor);
-    mock.expects('foreground').once().withExactArgs(false).returns(cursor);
+    mock.expects('background').once().withExactArgs('none').returns(cursor);
+    mock.expects('foreground').once().withExactArgs('none').returns(cursor);
     mock.expects('moveTo').exactly(8).returns(cursor);
     mock.expects('write').exactly(7).returns(cursor);
 
@@ -56,8 +56,8 @@ describe('Shape::Rectangle', () => {
         height: 5,
         x: 10,
         y: 10,
-        background: false,
-        foreground: false
+        background: 'none',
+        foreground: 'none'
       }
     });
   });
@@ -82,7 +82,7 @@ describe('Shape::Rectangle', () => {
     assert.equal(rectangle.getHeight(), 50);
     assert.equal(rectangle.getX(), 1);
     assert.equal(rectangle.getY(), 1);
-    assert.notOk(rectangle.getBackground());
-    assert.notOk(rectangle.getForeground());
+    assert.equal(rectangle.getBackground(), 'none');
+    assert.equal(rectangle.getForeground(), 'none');
   });
 });
