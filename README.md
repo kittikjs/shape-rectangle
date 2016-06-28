@@ -13,7 +13,11 @@
 ![dependencies](https://img.shields.io/david/kittikjs/shape-rectangle.svg)
 ![dev dependencies](https://img.shields.io/david/dev/kittikjs/shape-rectangle.svg)
 
-Rectangle shape for Kittik
+Rectangle shape for Kittik.
+
+| Examples |
+| -------- |
+| ![kittik](https://cloud.githubusercontent.com/assets/3625244/16409662/58cd179e-3d27-11e6-90ff-8d2710e1c9c4.gif) |
 
 ## Getting Started
 
@@ -29,9 +33,14 @@ Include in your project:
 import Rectangle from 'kittik-shape-rectangle';
 import Cursor from 'kittik-cursor';
 
-// You must pass to render method cursor that will be used for rendering the shape
-Rectangle.create(Cursor.create()).render();
+Rectangle.create(Cursor.create(), {background: 'white', text: 'Hello, World'}).render();
 ```
+
+You can pass all the options from `kittik-shape-basic`.
+
+## API
+
+API declaration for `kittik-shape-rectangle` [here](./API.md).
 
 ## License
 
